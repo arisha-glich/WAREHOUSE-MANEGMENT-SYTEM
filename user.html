@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f5;
+        }
+
+        header {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .button-list {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .button-item {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .button-item:hover {
+            background-color: #312c67;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 40%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+        header {
+    
+    background-color: #090349;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+/* Navigation Bar Styles */
+nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-title {
+    padding: 0px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+nav a {
+
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px; /* Adjusted padding to increase spacing */
+    margin-right: auto;
+}
+
+nav a:hover {
+    background-color: #5e5a97;
+}
+        .box h2 {
+            color: #423c89;
+            font-size: 1.5em;
+        }
+
+        .box p {
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">ABC Inventory System</div>
+            <ul class="nav-links">
+                <li><a href="../users/user_dashboard.html">Home</a></li>
+                <li><a href="../users/user_about.html">About</a></li>
+                <li><a href="../users/user_signup.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       
+
+        <div class="box-container">
+            <div class="box" onclick="location.href='user_signup.html';">
+                <h2>Make a new User</h2>
+                <p>Only Admin can create Users</p>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+</html>

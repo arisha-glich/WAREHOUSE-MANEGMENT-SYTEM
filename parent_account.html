@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Parent Account</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../reports/report_header.css">
+</head>
+<style>
+    body{
+font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #b3c2d4;
+    background-size: cover;
+    height: 100vh; /* Ensures full viewport height */}
+    form {
+            width: 400px;
+            padding: 100px;
+            margin: auto;
+            background-color: white;
+            opacity: 0.9;
+            font-size: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+.button-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button-item {
+    background-color: #a39210;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-item:hover {
+    background-color: #423c89;
+}
+
+footer {
+    background-color: #423c89;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+    </style>
+<header>
+    <nav>
+        <div class="logo">Warehouse Inventory System</div>
+        <ul class="nav-links">
+            <li><a href="../dashboard.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../contactus.html">Contact</a></li>
+            <li><a href="../add_product.html">Product</a></li>
+            <li><a href="../view_product.html">Reports</a></li>
+            <li><a href="parent_account.html">Parent Accounts</a></li>
+            <li><a href="control_account.html">Control Accounts</a></li>
+            <li><a href="ledger_account.html">Ledger Accounts</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    
+
+    <form id="createParentAccountForm"><h2>Create Parent Account</h2>
+        <label for="account_name">Account Name:</label>
+        <input type="text" id="account_name" name="account_name" required><br><br>
+        
+        <label for="initial_amount">Initial Amount:</label>
+        <input type="number" id="initial_amount" name="initial_amount" min="0" step="0.01" required><br><br>
+        
+        <button type="submit">Create Account</button>
+    </form>
+
+    <div id="parentAccountDetails"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('#createParentAccountForm').submit(function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get form data
+                var formData = $(this).serialize();
+
+                // Submit form data using AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'parent_account.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        // Display details of the newly added parent account
+                        var detailsHtml = `
+                            <h3>New Parent Account Details:</h3>
+                            <p><strong>ID:</strong> ${response.id}</p>
+                            <p><strong>Account Name:</strong> ${response.account_name}</p>
+                            <p><strong>Initial Amount:</strong> ${response.initial_amount}</p>
+                        `;
+                        $('#parentAccountDetails').html(detailsHtml);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error creating parent account:', error);
+                        alert('Failed to create parent account. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+<footer>
+    <p>Contact us at: your.email@example.com</p>
+    <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+</footer>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+   
+    <style>
+        /* Reset default margin and padding */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #8fb2c9;
+            margin: 0;
+            padding: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100px; /* Ensure the body fills the viewport height */
+            background-image: url(images/consturction_2.jpg);
+        }
+
+        .container {
+            width: 70%;
+            max-width: 800px; /* Limit container width for larger screens */
+            text-align: center; /* Center content within the container */
+        }
+
+        h2 {
+            text-align: center;
+            color: #423c89;
+            margin-bottom: 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #090349;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form styles */
+        label, select, input {
+            display: block;
+            margin: 10px auto;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        select {
+            padding: 8px;
+            width: 84%;
+            max-width: 300px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #423c89;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2e2a72;
+        }
+
+        /* Product table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto; /* Center the table */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            font-size: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #423c89;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Footer styles */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            padding: 20px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<header>
+    <nav>
+        <div class="logo">
+            <img src="images/22-removebg-preview.png" alt="Logo">
+            <h1>WAREHOUSE MANAGEMENT SYSTEM</h1>
+        </div>
+        <div>
+            <a href="product.html">Product</a>
+            <a href="users/user.html">Users</a>
+            <a href="about.html">About</a>
+            <a href="contactus.html">Contact Us</a>
+            <button class="logout-btn" onclick="openLogoutPopup()">Logout</button>
+        </div>
+    </nav>
+</header>
+<body>
+
+<div class="container">
+    <h2>View Products</h2>
+
+   <!-- Search Filters -->
+<div>
+    <br><label for="search">Search:</label>
+    <br><input type="text" id="search" name="search" placeholder="Enter search term...">
+    
+    <br><label for="filter">Filter by:</label>
+    <select id="filter" name="filter">
+        <option value="name">Product Name</option>
+        <option value="description">Description</option>
+        <option value="category">Category</option>
+        <option value="brand">Brand</option>
+        <option value="warehouse_location">City</option>
+        <option value="date_added">Date Added</option> <!-- Add date filter option -->
+    </select>
+    
+    <br><label for="date">Date:</label>
+    <input type="date" id="date" name="date"> <!-- Add date input field -->
+    
+    <button onclick="fetchProducts()">Apply Filters</button>
+</div>
+
+
+    <!-- Container to display product details -->
+    <div id="productDetailsContainer"></div>
+</div>
+
+<footer>
+    <p>Contact us at: your.email@example.com</p>
+    <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+</footer>
+
+<script>
+    function fetchProducts() {
+        const search = document.getElementById('search').value.trim();
+        const filter = document.getElementById('filter').value;
+        const url = `view_product.php?search=${search}&filter=${filter}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const productContainer = document.getElementById('productDetailsContainer');
+                productContainer.innerHTML = ''; // Clear previous content
+
+                if (data && data.products && data.products.length > 0) {
+                    let table = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Brand</th>
+                                    <th>Unit</th>
+                                    <th>Cost per Unit</th>
+                                    <th>Description</th>
+                                    <th>Stock</th>
+                                    <th>Date Added</th>
+                                    <th>City</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    data.products.forEach(product => {
+                        table += `
+                            <tr>
+                                <td>${product.name}</td>
+                                <td>${product.category}</td>
+                                <td>${product.brand}</td>
+                                <td>${product.unit}</td>
+                                <td>${product.cost_per_unit}</td>
+                                <td>${product.description}</td>
+                                <td>${product.stock}</td>
+                                <td>${product.date_added}</td>
+                                <td>${product.warehouse_location}</td>
+                            </tr>
+                        `;
+                    });
+
+                    table += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    productContainer.innerHTML = table;
+                } else {
+                    productContainer.innerHTML = '<p>No products found.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching products:', error);
+                const productContainer = document.getElementById('productDetailsContainer');
+                productContainer.innerHTML = '<p>Error fetching products.</p>';
+            });
+    }
+
+    // Call fetchProducts initially (e.g., on page load)
+    fetchProducts();
+</script>
+
+</body>
+</html>

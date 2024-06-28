@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="forms_header.css">
+    <header>
+        <nav>
+            <div class="logo">WAREHOUSE MANAGEMENT</div>
+            <ul class="nav-links">
+                <li><a href="login.html">Home</a></li>
+                <li><a href="login.html">About</a></li>
+                <li><a href="login.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+       
+       
+        footer {
+            background-color: #423c89; /* Dark purple footer */
+            color: #ffffff;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+
+         
+        h2 {
+
+color:darkblue;
+align-items: center;
+text-align: center;
+font-size: 30px;
+}
+
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3498db;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        form {
+            width: 400px;
+            padding: 100px;
+            margin: auto;
+           opacity: 0.9;
+            border-radius: 8px;
+            box-shadow: skyblue;
+            background-color:white;
+        }
+
+        input[type="submit"] {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #423c89;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    
+    
+    <form action="login.php" method="post"><h2>Admin Login</h2>
+        <label for="user_id">ID:</label>
+        <input type="text" id="user_id" name="user_id" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="Log In">
+    </form>
+
+    <?php if (isset($error_message)): ?>
+        <p class="error"><?php echo $error_message; ?></p>
+    <?php endif; ?>
+
+
+</body>
+</html>

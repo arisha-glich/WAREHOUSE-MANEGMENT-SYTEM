@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Movement Form</title>
+    <link rel="stylesheet" href="report_header.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 80vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        form {
+            width: 400px;
+            padding: 100px;
+            margin: auto;
+            background-color: rgb(194, 194, 197);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #productError {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ABC Inventory System</div>
+            <ul class="nav-links">
+                <li><a href="inventory_report.php">Inventory Reports</a></li>
+                <li><a href="stock_aging_report.php">Stock Aging Reports</a></li>
+                <li><a href="stock_movement_report.html">Stock Movement Reports</a></li>
+                <li><a href="stock_value_report.php">Stock Value Reports</a></li>
+                <button class="print-button" onclick="printReport()">Print Report</button>
+            </ul>
+        </nav>
+    </header>
+
+    <h2 style="text-align: center;">Stock Movement Form</h2>
+
+    <form action="stock_movement_report.php" method="post" onsubmit="return validateProductID()">
+        <label for="product_id">Product ID:</label>
+        <input type="text" id="product_id" name="product_id" required><br><br>
+
+        <label for="stock_change">Stock Change:</label>
+        <input type="number" id="stock_change" name="stock_change" required><br><br>
+
+        <label for="action">Action:</label>
+        <select id="action" name="action" required>
+            <option value="in">In</option>
+            <option value="out">Out</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="productError" style="color: red; text-align: center;"></p>
+
+    <script src="script.js"></script>
+    <script>
+        function validateProductID() {
+            let productId = document.getElementById('product_id').value;
+            // Perform basic validation, e.g., check if productId is a number and not empty
+            if (isNaN(productId) || productId.trim() === '') {
+                document.getElementById('productError').textContent = 'Please enter a valid Product ID.';
+                return false;
+            }
+            return true;
+        }
+
+        function printReport() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

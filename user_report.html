@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ecf0f5;
+    background-image: url('../images/con7.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Ensures full viewport height */
+}
+
+header {
+    background-color: #423c89;
+    color: #ffffff;
+    padding: 15px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.button-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button-item {
+    background-color: #a39210;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-item:hover {
+    background-color: #423c89;
+}
+
+footer {
+    background-color: #423c89;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+    </style>
+
+<header>
+    <nav>
+        <div class="logo">Warehouse Inventory System</div>
+        <ul class="nav-links">
+            <li><a href="user_dashboard.html">Home</a></li>
+            <li><a href="user_about.html">About</a></li>
+            <li><a href="user_about.html">Contact</a></li>
+            <li><a href="../add_product.html">Product</a></li>
+            <li><a href="../view_product.html">Reports</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="button-list">
+        <div class="button-item" onclick="location.href='../reports/inventory_report.php';">
+            <h2>Inventory Report</h2>
+        </div>
+        <div class="button-item" onclick="location.href='../reports/stock_aging_report.php';">
+            <h2> Stock Aging Report</h2>
+        </div>
+        <div class="button-item" onclick="location.href='../reports/stock_movement_report.html';">
+            <h2>Stock Movement Report</h2>
+        </div>
+        <div class="button-item" onclick="location.href='../reports/stock_value_report.php';">
+            <h2>Stock Value Report</h2>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Contact us at: your.email@example.com</p>
+    <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+</a>

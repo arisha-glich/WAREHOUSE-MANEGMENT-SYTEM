@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f5;
+            background-image: url(images/con7.jpg);
+            background-position: center;
+            background-size: cover;
+            color: #000000; 
+        }
+
+        header {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hero {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for readability */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .action-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .action-box {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .action-box:hover {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #423c89;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">WAREHOUSE MANAGEMENT</div>
+            <ul class="nav-links">
+                <li><a href="login.html">Home</a></li>
+                <li><a href="login.html">About</a></li>
+                <li><a href="login.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Warehouse Management</h1>
+            <p>Your one-stop solution for efficient warehouse management.</p>
+        </section>
+
+        
+
+        <div class="action-boxes">
+            <div class="action-box" onclick="location.href='login.html';">
+                <h2>Admin Login</h2>
+                <p>Already have an account? Log in here.</p>
+                <button>Login</button>
+            </div>
+            <div class="action-box" onclick="location.href='users/user_signup.html';">
+                <h2>User Sign Up</h2>
+                <p>Create an account to get started</p>
+                <button>User Sign Up</button>
+            </div>
+
+            <div class="action-box" onclick="location.href='users/user_login.html';">
+                <h2>User Login</h2>
+                <p>Already have an account? Log in here.</p>
+                <button>Login</button>
+           

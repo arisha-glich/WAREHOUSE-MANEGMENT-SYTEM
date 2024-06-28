@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+
+            background-image: url('../images/con7.jpg');
+            background-size: cover; /* Adjusts the background image to cover the entire viewport */
+        }
+
+        /* Fixed Header Styles */
+        header {
+    
+            background-color: #090349;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+            top: 0;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dashboard-title {
+            padding: 0px;
+            font-size: 30px;
+            font-weight: bold;
+            margin-right: auto;
+        }
+
+        nav a {
+
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 10px; /* Adjusted padding to increase spacing */
+            margin-right: auto;
+        }
+
+        nav a:hover {
+            background-color: #5e5a97;
+        }
+
+        /* Side Menu Styles */
+        .side-menu {
+            height: 100%;
+            width: 250px; /* Adjusted width of the side menu */
+            position: -webkit-sticky;
+            z-index: 1;
+            top: 50px; /* Adjusted top position to start below the fixed header */
+            left: 0;
+            background-color:  #312c67;
+            overflow-y:hidden;
+            transition: 0.5s;
+            color: #fff;
+            padding-top: 50px; /* Adjusted top padding */
+        }
+
+        .side-menu a {
+            padding: 50px; /* Reduced padding for a more compact appearance */
+            text-decoration: none;
+            font-size: 19px; /* Reduced font size for menu items */
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 2px solid #fff;
+            background-color:  #090349;
+            border-radius: 10px; /* Adjusted border radius for a softer look */
+            margin-bottom: 15px; /* Reduced bottom margin between menu items */
+        }
+
+        .side-menu a:hover {
+      background-color: #9690db;
+      opacity: 0.9;
+    }
+
+        /* Content Container Styles */
+        .content-container {
+            margin-left: 200px; /* Adjusted margin to match side menu width */
+            padding: 40px;
+            color: black;
+        }
+
+        .content-container h1 {
+            font-size: 3em;
+            font-weight: normal;
+            line-height: 1.5;
+            color: #423c89;
+            text-align: center;
+        }
+
+        /* Fixed Footer Styles */
+        footer {
+            background-color: #423c89;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Fixed Header with Navigation -->
+<header>
+    <nav>
+        <div class="dashboard-title">Welcome to Users Dashboard</div>
+        <a href="user_dashboard.html">Home</a>
+        <a href="../users/user_about.html">About</a>
+        <a href="../users/user_contactus.html">Contact</a>
+        <a href="../index.html">Log Out</a>
+    </nav>
+</header>
+
+<!-- Side Menu -->
+<div class="side-menu">
+    <a href="../users/user_dashboard.html">
+        <h2>MAIN MENU</h2>
+        <p>You can click their for variety of our warehouse </p>
+    </a>
+    <a href="../product.html">
+        <h2>Product</h2>
+        <p>User can Add, View, and Delete the product </p>
+    </a>
+    <a href="../users/user_report.html">
+        <h2> Reports</h2>
+        <p>Review Products by Category, Brands ,item-wise, day-wise, or month-wise details</p>
+   
+    <a href="../voucher/voucher.html">
+        <h2>Generate Voucher</h2>
+        <p>Create new vouchers for transactions</p>
+    </a>
+
+    <a href="../chart_of_account/transaction.php">
+        <h2>View Transactions</h2>
+        <p>View legder transactions</p>
+    </a>
+</div>
+
+<!-- Content Container -->
+<div class="content-container">
+    <!-- Main content goes here -->
+</div>
+
+<!-- Fixed Footer -->
+<footer>
+    <p>Contact us at: your.email@example.com</p>
+    <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

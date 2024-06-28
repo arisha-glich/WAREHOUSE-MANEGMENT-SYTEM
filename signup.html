@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="forms_header.css">
+    <header>
+        <nav>
+            <div class="logo">WAREHOUSE MANAGEMENT</div>
+            <ul class="nav-links">
+                <li><a href="login.html">Home</a></li>
+                <li><a href="login.html">About</a></li>
+                <li><a href="login.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+       
+        
+        h2 {
+
+            color:darkblue;
+            align-items: center;
+            text-align: center;
+            font-size: 30px;
+        }
+        
+     
+        form {
+         
+            width: 400px;
+            padding:  100px  ;
+            margin: auto;
+           opacity: 0.9;
+            border-radius: 8px;
+            box-shadow: skyblue;
+            background-color:white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3498db;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #423c89;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #423c89;
+        }
+    </style>
+</head> 
+
+<body>
+    
+    <form action="signup.php" method="post" > <h2>SIGN UP </h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="contactNo">Contact No:</label>
+        <input type="tel" id="contactNo" name="contactNo" required>
+
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Sign Up" onclick=""> 
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC Inventory System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-jp4L3p1ZlWsQGmY7oqdd27zrSUtFpMtE0lmPA2o0hEzW+NpCBW/lBvg5I7y4B5EPh/Z8oMOhxSsUxS8CrL3txQ=="
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
+    nav {
+      background-color: #090349;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      font-family: 'cursive';
+      display: flex;
+      justify-content: top;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+
+    nav h1 {
+      color: white;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .side-menu {
+      height: 90%;
+      width: 300px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #353253;
+      z-index: 999;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 100px;
+      color: #fff;
+    }
+
+    .side-menu a {
+      padding: 40px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+      border-bottom: 2px solid #fff;
+      background-color: #312c67;
+      border-radius: 20px;
+      margin-bottom: 4px;
+    }
+
+    .side-menu a:hover {
+      background-color: #9690db;
+      opacity: 0.9;
+    }
+
+    .content-container {
+      position: relative;
+      width: calc(100% - 300px);
+      margin-left: 300px;
+      padding: 40px;
+      opacity: 0.9;
+      color: black;
+      text-align: center;
+    }
+
+    .content-container h2 {
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1.5;
+      color: black;
+      margin-bottom: 20px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .logout-btn {
+      background: #e3c82f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 12px;
+      border-radius: 20px;
+    }
+
+    .image img {
+      width: 100%;
+    }
+
+    .logout-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background: #616076;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #423c89;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="images/22-removebg-preview.png" alt="Logo">
+        <h1>WAREHOUSE MANAGEMENT SYSTEM</h1>
+      </div>
+      <div>
+        <a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a>
+        <a href="product.html">Product</a>
+        <a href="users/user.html">Users</a>
+        <a href="about.html">About</a>
+        <a href="contactus.html">Contact Us</a>
+        <button class="logout-btn" onclick="openLogoutPopup()">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Side Menu -->
+  <div class="side-menu">
+    <a href="dashboard.html">MENU <br>You can click their for variety of our warehouse <br> </a>
+    <a href="product.html">Product</a>
+    <a href="users/user.html">Users</a>
+    <a href="supplier.html">Supplier</a>
+    <a href="reports/report.html">Reports</a>
+    <a href="chart_of_account/account.html">Chart of Accounts</a>
+    <a href="voucher/voucher.html">Vouchers</a>
+  </div>
+
+  <!-- Logout Popup -->
+  <div class="logout-popup" id="logoutPopup">
+    <h2>Are you sure you want to logout?</h2>
+    <button onclick="logout()">Logout</button>
+    <button onclick="closeLogoutPopup()">Cancel</button>
+    <a href="index.html">Home</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="image"><img src="images/con7.jpg" alt=""></div>
+
+  <div class="content-container">
+    <!-- Main content goes here -->
+    <h2>Welcome to the Warehouse Management System</h2>
+    <p>This system helps you manage your inventory efficiently.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact us at: your.email@example.com</p>
+    <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openLogoutPopup() {
+      document.getElementById("logoutPopup").style.display = "block";
+    }
+
+    function closeLogoutPopup() {
+      document.getElementById("logoutPopup").style.display = "none";
+    }
+
+    function logout() {
+      // Perform logout actions here
+      alert("Logout successful!");
+      window.location.href = "index.html"; // Redirect to index.html after logout
+    }
+  </script>
+</body>
+</html>

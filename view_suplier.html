@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Suppliers</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+      
+            color: #0c6aa9;
+            margin: 0;
+            padding: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100px; /* Ensure the body fills the viewport height */
+            background-image: url(images/consturction_2.jpg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 10000px; /* Limit container width for larger screens */
+        }
+
+        h2 {
+            text-align: center;
+            color:#423c89;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #090349;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Product details styles */
+        .supplier-info {
+            padding: 50px;
+            border-radius: 8px;
+            margin-top: 40px;
+            width: 500px; /* Adjust width as needed */
+        }
+
+        .supplier-info h3 {
+            color: #423c89;
+            margin-bottom: 10px;
+            font-size: 1000px;
+        }
+
+        .supplier-info p {
+            margin-bottom: 8px;
+            font-size: 100px;
+        }
+
+        /* Footer styles */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            padding: 20px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/22-removebg-preview.png" alt="Logo">
+            <h1>WAREHOUSE MANAGEMENT SYSTEM</h1>
+        </div>
+        <nav>
+            <a href="product.html">Products</a>
+            <a href="users/user.html">Users</a>
+            <a href="about.html">About</a>
+            <a href="contactus.html">Contact Us</a>
+          
+        </nav>
+    </header>
+
+    <div class="container">
+      
+
+        <!-- Container to display supplier details -->
+        <div class="supplier-info" id="supplierDetailsContainer"></div>
+    </div>
+
+    <footer>
+        <p>Contact us at: your.email@example.com</p>
+        <p>&copy; 2024 ABC Inventory System. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        fetch('view_suplier.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('supplierDetailsContainer').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching suppliers:', error);
+                const supplierContainer = document.getElementById('supplierDetailsContainer');
+                supplierContainer.innerHTML = '<p>Error fetching suppliers.</p>';
+            });
+    </script>
+</body>
+</html>

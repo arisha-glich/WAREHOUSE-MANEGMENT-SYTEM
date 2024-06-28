@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUCTS REPORT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(images/con_4.jpg);
+        }
+
+        header {
+            width: 100%;
+            background-color: #06436c;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #423c89;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 24px;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #productDetailsContainer {
+            margin-top: 20px;
+        }
+
+        .product-item {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product-item h3 {
+            color: #423c89;
+            margin-bottom: 10px;
+        }
+
+        .product-info {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #06436c;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>REPORT VIEWER
+            <a href="dashboard.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contactus.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>PRODUCT REPORT</h2>
+
+        <!-- Search Filters -->
+        <div>
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Enter search term...">
+            
+            <label for="filter">Filter by:</label>
+            <select id="filter" name="filter">
+                <option value="name">Product Name</option>
+                <option value="description">Description</option>
+                <option value="category">Category</option>
+                <option value="brand">Brand</option>
+                <option value="date_added">Date Added</option>
+                <option value="date_week">Week of Year</option>
+                <option value="date_month">Month</option>
+                <option value="date_year">Year</option>
+            </select>
+            
+            <button onclick="fetchProducts()">Apply Filters</button>
+        </div>
+
+        <!-- Container to display product details -->
+        <div id="productDetailsContainer"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Product Viewer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to fetch and display product details based on search criteria
+        function fetchProducts() {
+            const search = document.getElementById('search').value.trim();
+            const filter = document.getElementById('filter').value;
+            const url = `view_product.php?search=${search}&filter=${filter}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const productContainer = document.getElementById('productDetailsContainer');
+                    productContainer.innerHTML = ''; // Clear previous content
+                    
+                    if (data && data.products && data.products.length > 0) {
+                        data.products.forEach(product => {
+                            const productItem = document.createElement('div');
+                            productItem.className = 'product-item';
+                            productItem.innerHTML = `
+                                <h3>${product.name}</h3>
+                                <div class="product-info">
+                                    <p><strong>Category:</strong> ${product.category}</p>
+                                    <p><strong>Brand:</strong> ${product.brand}</p>
+                                    <p><strong>Unit:</strong> ${product.unit}</p>
+                                    <p><strong>Cost per Unit:</strong> ${product.cost_per_unit}</p>
+                                    <p><strong>Description:</strong> ${product.description}</p>
+                                    <p><strong>Stock:</strong> ${product.stock}</p>
+                                    <p><strong>Date Added:</strong> ${product.date_added}</p>
+                                </div>
+                                <hr>
+                            `;
+
+                            productContainer.appendChild(productItem);
+                        });
+                    } else {
+                        // Display a message when no products are found
+                        productContainer.innerHTML = `<p>No products found for "${search}" based on "${filter}".</p>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                    const productContainer = document.getElementById('productDetailsContainer');
+                    productContainer.innerHTML = '<p>Error fetching products.</p>';
+                });
+        }
+
+        // Call fetchProducts initially (e.g., on page load)
+        fetchProducts();
+    </script>
+</body>
+</html>
